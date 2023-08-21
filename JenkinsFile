@@ -1,0 +1,17 @@
+pipeline {
+  agent {
+    docker {
+      image 'pavanvarikolu/springboot-app-demo:v1.1.0'
+      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+    }
+  }
+  stages {
+    stage('Checkout') {
+      steps {
+        sh 'echo passed'
+        //git branch: 'main', url: 'https://github.com/pavanvarikolu/springboot-demo.git'
+      }
+    }
+
+}
+}
